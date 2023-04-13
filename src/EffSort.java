@@ -23,11 +23,20 @@ public class EffSort {
     }
 
     int partition(int low, int up) {
-        return 0;
+        int i = low;
+        for(int j = low; j < up; j++)
+            if(a[j] <= a[up])
+                swap(a, i++, j);
+        swap(a, i, up);
+        return i;
     }
 
     void quickSort(int low, int up) {
-
+        if(low < up) {
+            int pivot = partition(low, up);
+            quickSort(low, pivot - 1);
+            quickSort(pivot + 1, up);
+        }
     }
 
     void quickSort() {
